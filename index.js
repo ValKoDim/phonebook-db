@@ -9,6 +9,7 @@ morgan.token('body', (req) => {
 app.use(express.json())
 app.use(morgan(':method :url :status :response-time :body'))
 app.use(cors())
+app.use(express.static('dist'))
 
 const generateId = () => {
     const maxId = persons.length > 0
@@ -40,10 +41,6 @@ let persons = [
           "number": "39-23-6423122"
         }
     ]
-
-app.get('/', (request, response) => {
-    response.send('<h1>Hello World!</h1>')
-  })
 
   app.get('/api/persons' , (request, response) => {
     response.send(persons)
